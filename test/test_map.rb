@@ -14,7 +14,7 @@ class TestMap < Minitest::Test
   end
 
   def test_set_tile
-    map[1, 2] = Tile.new
+    map[1, 2] = Tile.new()
     assert map[1,2].is_a?(Tile),
       "Could not set tile on map."
     assert_raises RuntimeError do
@@ -34,7 +34,7 @@ class TestMap < Minitest::Test
     map[1, 2] = Tile.new
     assert map[1,2].is_a?(Tile),
       "Could not set tile on map."
-    asset map[0,0].map == map,
+    assert_equal map[0,0].map, map,
       "Tile did not know where that it was owned by map `map`."
   end
 

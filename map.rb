@@ -41,7 +41,8 @@ private
     0.upto(width) do |wd|
       @tiles[wd] = {}
       0.upto(height) do |ht|
-        @tiles[wd][ht] = NullTile.new
+        tile = (@tiles[wd][ht] = NullTile.new)
+        tile.map = self
       end
     end
   end
