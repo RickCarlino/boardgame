@@ -29,8 +29,8 @@ class TestMap < Minitest::Test
   end
 
   def test_get_tile
-    assert map[0, 1].is_a?(NullTile),
-      "Lookups of empty tiles should return NullTile."
+    assert map[0, 1].is_a?(Tile),
+      "Lookups of tiles should return Tile."
     map[1, 2] = Tile.new
     assert map[1,2].is_a?(Tile),
       "Could not set tile on map."
@@ -41,11 +41,12 @@ class TestMap < Minitest::Test
   def test_inspect
     map[0, 0]   = Tile.new
     map[3, 3]   = Tile.new
+    map.place(Piece.new, 2, 1)
     expectation = "\n"\
-                  "#...\n"\
                   "....\n"\
+                  "..#.\n"\
                   "....\n"\
-                  "...#\n"
+                  "....\n"
     assert_equal map.inspect, expectation,
       "Maps dont look right in console."
   end

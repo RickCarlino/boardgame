@@ -5,4 +5,12 @@ class TestTile < Minitest::Test
     assert Tile.new.is_a?(Tile),
       "Expected new tile to be."
   end
+
+  def test_insertion
+    tile  = Tile.new
+    piece = Piece.new
+    tile.add piece
+    assert tile.contents.first == piece,
+      "Did not put piece on tile."
+  end
 end
