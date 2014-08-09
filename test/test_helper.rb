@@ -1,3 +1,5 @@
+require "simplecov"
+SimpleCov.start
 require 'minitest/autorun'
-require_relative '../game'
+require_relative '../lib/game'
 require 'pry'

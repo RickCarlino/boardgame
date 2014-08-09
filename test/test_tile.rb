@@ -9,8 +9,8 @@ class TestTile < Minitest::Test
   def test_insertion
     tile  = Tile.new
     piece = Piece.new
-    tile.add piece
-    assert tile.contents.first == piece,
+    tile << piece
+    assert tile.content.first == piece,
       "Did not put piece on tile."
   end
 end

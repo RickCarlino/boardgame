@@ -2,15 +2,26 @@ require "test_helper"
 
 class TestMap < Minitest::Test
 
-  attr_reader :map
-
-  def setup
-    @map = Map.new(4, 4)
+  def map
+    @map ||= Map.new(4, 4)
   end
 
   def test_new
     assert map.tiles.is_a?(Hash),
       "Expected new maps to have a tiles hash."
+  end
+
+  def test_within
+    assert map.within?(2, 2),
+      "Within did not identify coords within bounds"
+    assert map.within?(0, 0),
+      "Within did not identify coords within bounds"
+    refute map.within?(-1, 0),
+      "Within did not identify coords within bounds"
+    refute map.within?(4, 4),
+      "Within did not identify coords outside bounds"
+    refute map.within?(5, 5),
+      "Within did not identify coords outside bounds"
   end
 
   def test_set_tile
@@ -41,12 +52,12 @@ class TestMap < Minitest::Test
   def test_inspect
     map[0, 0]   = Tile.new
     map[3, 3]   = Tile.new
-    map.place(Piece.new, 2, 1)
+    map[2, 1] << Piece.new
     expectation = "\n"\
-                  "....\n"\
-                  "..#.\n"\
-                  "....\n"\
-                  "....\n"
+                  "□□□□\n"\
+                  "□□+□\n"\
+                  "□□□□\n"\
+                  "□□□□\n"
     assert_equal map.inspect, expectation,
       "Maps dont look right in console."
   end
