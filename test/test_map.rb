@@ -7,8 +7,8 @@ class TestMap < Minitest::Test
   end
 
   def test_new
-    assert map.tiles.is_a?(Hash),
-      "Expected new maps to have a tiles hash."
+    assert map.tiles.is_a?(Array),
+      "Expected new maps to have a tiles array."
   end
 
   def test_within
@@ -65,6 +65,7 @@ class TestMap < Minitest::Test
   def test_validate_height
     assert_raises RuntimeError do
       BoardGame::Map.new "1", 1
-    end 
+    end
   end
+
 end

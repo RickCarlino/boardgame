@@ -11,5 +11,5 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.summary = "Control logic for board and tile based games using Ruby."
   s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.version = '0.0.2'
+  s.version = '0.0.3'
 end

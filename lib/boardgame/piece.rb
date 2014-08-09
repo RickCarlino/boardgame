@@ -13,4 +13,8 @@ class BoardGame::Piece
   def inspect
     "+"
   end
+
+  def as_json(*args)
+    {}
+  end
 end

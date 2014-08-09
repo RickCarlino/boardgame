@@ -42,12 +42,16 @@ class BoardGame::Map
     return buffer
   end
 
+  def as_json(*args)
+    tiles.as_json
+  end
+
 private
 
   def initialize_map_tiles
-    @tiles = {}
+    @tiles = []
     0.upto(max_x) do |wd|
-      @tiles[wd] = {}
+      @tiles[wd] = []
       0.upto(max_y) do |ht|
         self[wd, ht] = BoardGame::Tile.new({})
       end

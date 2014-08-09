@@ -29,4 +29,10 @@ class BoardGame::Tile
     piece.tile = nil
     @content.delete piece
   end
+
+  def as_json(*args)
+    {x: @x,
+     y: @y,
+     content: @content}
+  end
 end
