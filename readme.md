@@ -32,5 +32,5 @@ home_tile << knight
 knight.move_to map[0, 0]
 
 #remove from the board
-home_tile.remove(knight)
+map[0, 0].remove(knight)
 ```
