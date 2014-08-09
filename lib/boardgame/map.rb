@@ -4,7 +4,7 @@
 #| 1..#.   | with a piece
 #| Y       | placed in (2, 1)
 #`---------'
-class Map
+class BoardGame::Map
 
   attr_reader :tiles, :height, :width
 
@@ -22,7 +22,7 @@ class Map
   # Sets a tile for a given X/Y coord.
   def []=(x, y, tile)
     validate_coords(x, y)
-    raise 'needs to be a tile' unless tile.is_a? Tile
+    raise 'needs to be a tile' unless tile.is_a? BoardGame::Tile
     @tiles[x][y] = tile.move_to(x, y, self)
   end
 
@@ -49,7 +49,7 @@ private
     0.upto(max_x) do |wd|
       @tiles[wd] = {}
       0.upto(max_y) do |ht|
-        self[wd, ht] = Tile.new({})
+        self[wd, ht] = BoardGame::Tile.new({})
       end
     end
   end

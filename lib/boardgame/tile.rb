@@ -1,5 +1,5 @@
 # A single tile on the map/board.
-class Tile
+class BoardGame::Tile
 
   attr_accessor :content, :x, :y, :map
 
